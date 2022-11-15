@@ -14,7 +14,7 @@ namespace PMU
             this.NumCheval = numCheval;
             this.paris = paris;
             this.Gagnant = gagnant;
-            Console.WriteLine("nouveaux joueur créer");
+            Console.WriteLine("le joueur {0} a parié {1} sur le cheval {2}", nom, paris, numCheval);
          }
     }
 }

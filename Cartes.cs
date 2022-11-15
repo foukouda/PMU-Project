@@ -79,5 +79,19 @@ namespace PMU
             }
             return couleur;
         }
+        // créer une methode qui relit la couleur de la carte et la valeur de la carte et renvoie une chaine de caractère
+        public static string AfficheCarte(Cartes carte)
+        {
+            string carteAffiche = "";
+            carteAffiche = carte.Couleur + " " + carte.Valeur;
+            return carteAffiche;
+        }
+        // créer une methode qui recupere la chaine de caractère de la methode affichecarte et la relit un un fichier .txt du meme nom que la couleur ainsi que ca valeur de la carte
+        public static void EcritureCarte(Cartes carte)
+        {
+            string carteAffiche = AfficheCarte(carte);
+            System.IO.File.WriteAllText(@"C:\Users\Utilisateur\source\repos\Projet_dimitry\PMU\cartes\" + carte.Couleur + carte.Valeur + ".txt", carteAffiche);
+        }
+
     }
 }
