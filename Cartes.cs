@@ -90,7 +90,11 @@ namespace PMU
         public static void EcritureCarte(Cartes carte)
         {
             string carteAffiche = AfficheCarte(carte);
-            System.IO.File.WriteAllText(@"C:\Users\Utilisateur\source\repos\Projet_dimitry\PMU\cartes\" + carte.Couleur + carte.Valeur + ".txt", carteAffiche);
+            //System.IO.File.WriteAllText(@"C:\Users\Utilisateur\source\repos\Projet_dimitry\PMU\cartes\" + carte.Couleur + carte.Valeur + ".txt", carteAffiche);
+            var str = new SoapHexBinary(File.ReadAllBytes(@"C:\Users\Utilisateur\source\repos\Projet_dimitry\PMU\cartes\" + carte.Couleur + carte.Valeur + ".txt")).ToString();
+            Console.WriteLine(str);
+            Console.ReadLine();
+            
         }
 
     }
