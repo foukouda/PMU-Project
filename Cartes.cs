@@ -2,11 +2,13 @@ using System;
 
 namespace PMU
 {
-    public class Cartes
+    // ! Cette classe est une classe qui contient le jeu de cartes (les 52 cartes sont crées procéduralement est stocker dans une pile ou il sont melanger et distribuer 
+    // ! chaque carte on attribue un string pour pouvoir l'associer a une image .txt qui contient les donnez de limage en Hexadecimal qui sont lis par le programme 
+    public class Cartes 
     {
-        public string Couleur { get; set; }
-        public int Valeur { get; set; }
-        public bool passage { get; set; }
+        public string Couleur { get; set; } // TODO : Couleur de la carte
+        public int Valeur { get; set; } // TODO : Valeur de la carte
+        public bool passage { get; set; } // TODO : Permet de savoir si la carte a deja etait distribuer ou non
         public Cartes (string couleur, int valeur, bool passage)
          {
             this.Couleur = couleur;
@@ -14,25 +16,42 @@ namespace PMU
             this.passage = passage;
          }
 
-         // créer une methode qui permet de créer une pile de 52 cartes différentes de façon aléatoire
+         // ! méthode qui permet de créer les 52 cartes procéduralement et les stocke dans une pile 
         public static Cartes[] CreationPileCartes()
         {
             Cartes[] pileCartes = new Cartes[52];
             int i = 0;
             while (i < 52)
             {
-                for(int j = 0; j < 4; j++)
+                for(int j = 0; j < 4; j++) // *  if qui donne une couleurs a chaque cartes 
                 {
-                    for(int k = 0; k < 13; k++)
+                string couleur = "";
+                    switch (j)
                     {
-                        pileCartes[i] = new Cartes(CouleurCarte(j), k+1 , false);
+                    case 0:
+                        couleur = "coeur";
+                        break;
+                    case 1:
+                        couleur = "carreau";
+                         break;
+                    case 2:
+                        couleur = "pique";
+                        break;
+                    case 3:
+                        couleur = "trefle";
+                        break;
+                    }
+                    for(int k = 0; k < 13; k++) // * if qui donne un chiffre a chaque carte est la créer (le 11, 12 sont des valet, dame et roi) les carte sont false 
+                    {
+                        pileCartes[i] = new Cartes(couleur, k+1 , false);
                         i++;
                     }
                 }
             }
             return pileCartes;
         }
-        // créer une métodes qui récupere les cartes de créationpilecarte et les mélange et les mes dans une nouvelle liste de carte et la renvoie
+
+        // ! métthode qui récupère les Cartes de la méthode CreationPileCartes() et les mélange 
         public static Cartes[] MelangePileCartes(Cartes[] pileCartes)
         {
             Cartes[] pileCartesMelange = new Cartes[52];
@@ -50,52 +69,16 @@ namespace PMU
             }
             return pileCartesMelange;
         }
-// créer une methode qui lie la methode melangepilecarte et affiche toutes les cartes 
-        public static void AffichePileCartes(Cartes[] pileCartes)
+        // ! méthode qui créer un string qui contient la couleur et la valeur de la carte et l'associe a une image .txt 
+        // ! qui contient les donnez de limage en Hexadecimal qui sont lis par le programme et les affiches 
+        public static void EcritureCarte(Cartes[] pileCartes)
         {
             for (int i = 0; i < 52; i++)
             {
-                Console.WriteLine(pileCartes[i].Couleur + " " + pileCartes[i].Valeur);
-            }
+               var str = new SoapHexBinary(File.ReadAllBytes(@"C:\Users\Utilisateur\source\repos\Projet_dimitry\PMU\cartes\" + pileCartes[i].Couleur + PileCartes[i].Valeur + ".txt")).ToString();
+               Console.WriteLine(str);
+               Console.WriteLine(" ");
+            }    
         }
-        // créer une methode qui permet de créer une couleur de carte 
-        public static string CouleurCarte(int j)
-        {
-            string couleur = "";
-            switch (j)
-            {
-                case 0:
-                    couleur = "coeur";
-                    break;
-                case 1:
-                    couleur = "carreau";
-                    break;
-                case 2:
-                    couleur = "pique";
-                    break;
-                case 3:
-                    couleur = "trefle";
-                    break;
-            }
-            return couleur;
-        }
-        // créer une methode qui relit la couleur de la carte et la valeur de la carte et renvoie une chaine de caractère
-        public static string AfficheCarte(Cartes carte)
-        {
-            string carteAffiche = "";
-            carteAffiche = carte.Couleur + " " + carte.Valeur;
-            return carteAffiche;
-        }
-        // créer une methode qui recupere la chaine de caractère de la methode affichecarte et la relit un un fichier .txt du meme nom que la couleur ainsi que ca valeur de la carte
-        public static void EcritureCarte(Cartes carte)
-        {
-            string carteAffiche = AfficheCarte(carte);
-            //System.IO.File.WriteAllText(@"C:\Users\Utilisateur\source\repos\Projet_dimitry\PMU\cartes\" + carte.Couleur + carte.Valeur + ".txt", carteAffiche);
-            var str = new SoapHexBinary(File.ReadAllBytes(@"C:\Users\Utilisateur\source\repos\Projet_dimitry\PMU\cartes\" + carte.Couleur + carte.Valeur + ".txt")).ToString();
-            Console.WriteLine(str);
-            Console.ReadLine();
-            
-        }
-
     }
 }
