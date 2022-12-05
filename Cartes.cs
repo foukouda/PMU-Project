@@ -69,16 +69,15 @@ namespace PMU
             }
             return pileCartesMelange;
         }
-        // ! méthode qui créer un string qui contient la couleur et la valeur de la carte et l'associe a une image .txt 
-        // ! qui contient les donnez de limage en Hexadecimal qui sont lis par le programme et les affiches 
-        public static void EcritureCarte(Cartes[] pileCartes)
+        public static void AfficherCarte(Cartes carte)
         {
-            for (int i = 0; i < 52; i++)
+            string chemin = @"C:\Users\Public\Documents\PMU\Dossiercarte\" + carte.Couleur + carte.Valeur + ".txt";
+            string[] lignes = File.ReadAllLines(chemin);
+            foreach (string ligne in lignes)
             {
-               var str = new SoapHexBinary(File.ReadAllBytes(@"C:\Users\Utilisateur\source\repos\Projet_dimitry\PMU\cartes\" + pileCartes[i].Couleur + PileCartes[i].Valeur + ".txt")).ToString();
-               Console.WriteLine(str);
-               Console.WriteLine(" ");
-            }    
+                Console.WriteLine(ligne);
+            }
         }
+
     }
 }
