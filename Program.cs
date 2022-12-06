@@ -72,6 +72,7 @@ namespace PMU
         }
         static void Main(string[] args)
         {    
+            Console.Clear();
             bool continuer = true;
             Plateau plateau = InitPartie();
             while (continuer)
@@ -84,7 +85,6 @@ namespace PMU
                     continuer = false;
                 }
             }
-            
         }
     }
 }

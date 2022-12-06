@@ -25,7 +25,9 @@ namespace PMU
             Joueur[] joueurs = new Joueur[nbJoueurs];
             for (int i = 0; i < nbJoueurs; i++)
             {
-                joueurs[i] = new Joueur(lignes[i + 1]);
+                string[] infosJoueur = lignes[i + 1].Split(';');
+                joueurs[i] = new Joueur(infosJoueur[0]);
+                joueurs[i].FromCsv(infosJoueur);
             }
             
             Plateau plateau = new Plateau(joueurs);
@@ -37,7 +39,7 @@ namespace PMU
             lignes[0] = this.joueurs.Length.ToString();
             for (int i = 0; i < this.joueurs.Length; i++)
             {
-                lignes[i + 1] = this.joueurs[i].Nom;
+                lignes[i + 1] = this.joueurs[i].ToCsv();
             }
             File.WriteAllLines("partie.csv", lignes);
         }
@@ -87,16 +89,19 @@ namespace PMU
                 Console.Clear();
                 if (joueur.famille_pari == this.winner)
                 {
+                    joueur.PartieTerminee(true);
                     Console.WriteLine(joueur.Nom + ", tu as a gagné !");
                     Console.WriteLine("Tu peux distribuer tes " + joueur.montant_pari + " pompes aux autres joueurs.");
                 } else {
+                    joueur.PartieTerminee(false);
                     Console.WriteLine(joueur.Nom + ", tu as perdu !");
                     Console.WriteLine("Tu dois faire tes " + joueur.montant_pari + " pompes.");
                 }
-
                 Console.WriteLine("Appuyez sur une touche pour continuer.");
                 Console.ReadKey();
             }
+
+            Sauvegarder();
 
             Console.Clear();
         }
