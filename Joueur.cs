@@ -11,43 +11,59 @@ namespace PMU
 
         #region Getters and Setters
         public string Nom { get; set; }
-        public int NumCheval { get; set; }
-        public int paris { get; set; }
-        public bool Gagnant { get; set; }
-        public int nombrepartie { get; set; }
-        public int nombrevictoire { get; set; }
-
+        public string famille_pari { get; set; }
+        public int montant_pari { get; set; }
         #endregion
 
         #region Constructeurs
-        public Joueur () /// Constructeur débug
-            {
-                this.Nom = "test";
-                this.NumCheval = 2;
-                this.paris = 3;
-                this.Gagnant = false;
-                this.nombrepartie = 3;
-                this.nombrevictoire = 0;
-            }
-
         public Joueur (string nom) // Constructeur nouveau joueur
             {
                 this.Nom = nom;
-                this.nombrepartie = 0;
-                this.nombrevictoire = 0;
             }
-
-        public Joueur (string nom, int numCheval, int paris, bool gagnant, int nombrepartie, int nombrevictoire) // Constructeur joueur existant
-            {
-                this.Nom = nom;
-                this.NumCheval = numCheval;
-                this.paris = paris;
-                this.Gagnant = gagnant;
-                this.nombrepartie = nombrepartie;
-                this.nombrevictoire = nombrevictoire;
-            }
-
         #endregion
+        
+
+        public void DemanderInfos() {
+            Console.Clear();
+            Console.WriteLine(this.Nom);
+            DemanderFamille();
+            DemanderMontant();
+        }
+        
+        // demande une famille de carte
+        public void DemanderFamille() {
+            Console.WriteLine("Quelle famille de carte voulez-vous parier ? (coeur, carreau, pique, trefle)");
+            string famille = Console.ReadLine();
+            if (famille == "coeur" || famille == "carreau" || famille == "pique" || famille == "trefle")
+            {
+                this.famille_pari = famille;
+            } else
+            {
+                Console.WriteLine("Famille invalide.");
+                DemanderFamille();
+            }
+        }
+
+        // demande un montant de pari
+        public void DemanderMontant() {
+            Console.WriteLine("Combien de pompes voulez-vous parier ?");
+            int montant = 0;
+            int.TryParse(Console.ReadLine(), out montant);
+            // comme montant est 0 en cas d'erreur et 0 n'est pas un montant valide, on peut tester montant directement
+            if (montant > 0 && montant < 100)
+            {
+                this.montant_pari = montant;
+            } else 
+            {
+                Console.WriteLine("Montant invalide.");
+                DemanderMontant();
+            }
+        }
+
+        public string Afficher() {
+            string famille = Plateau.EmojiFamille(this.famille_pari);
+            return this.Nom + " ( " + this.montant_pari + " : " + famille + " )";
+        }
         
     }
 }
