@@ -13,7 +13,7 @@ namespace PMU
          // ! nom du joueur; nombre de partie joué; nombre de partie gagné
          // ! exemple : dimitry ; 5 ; 2
 
-        public string joueurExisteFichier(string nom)
+        public static (int,int) joueurExisteFichier(string nom)
             {
                 int nombrepartie = -1;
                 int nombrevictoire = -1;
@@ -42,11 +42,11 @@ namespace PMU
         // ! est utilise la methode joueurExisteFichier pour verifier si le joueur existe deja
 
 
-        public Joueur CreationJoueur()
+        public static Joueur CreationJoueur()
         {
             bool init_partie = false;
-            int nombrepartie;
-            int nombrevictoire;
+            int nombrepartie=0;
+            int nombrevictoire=0;
             int numCheval;
             int paris;
             bool gagnant;
@@ -60,8 +60,8 @@ namespace PMU
                         string reponse = Console.ReadLine();
                         if (reponse == "oui")
                         {
-                            nombrepartie = donnéesJoueur[0];
-                            nombrevictoire = donnéesJoueur[1];
+                            nombrepartie = donnéesJoueur.Item1;
+                            nombrevictoire = donnéesJoueur.Item2;
                             init_partie = true;
                         }
                         if (reponse == "non")
@@ -91,7 +91,7 @@ namespace PMU
         }
            
         // ! méthode qui permet de saisir le nom du joueur et vérifier si il n'est pas vide
-        public string SaisirNom()
+        public static string SaisirNom()
         {
             Console.WriteLine("Saisir le nom du joueur : ");
             string nom = "";
@@ -105,7 +105,7 @@ namespace PMU
             return nom;
         }
         // ! méthode qui permet de saisir le numéro du cheval
-        public int SaisirNumCheval()
+        public static int SaisirNumCheval()
         {
             int numCheval;
             Console.WriteLine("donnez le numéro du cheval");
@@ -120,7 +120,7 @@ namespace PMU
             return numCheval;
         }
         //! créer une méthode qui permet de saisir le montant du pari
-        public int SaisirParis()
+        public static int SaisirParis()
         {
             int paris;
             Console.WriteLine("donnez le montant du pari");
@@ -137,7 +137,7 @@ namespace PMU
         
         static void Main(string[] args)
         {    
-            Joueur test = new Joueur();
+            Joueur joueur = CreationJoueur();
         }
     }
 }

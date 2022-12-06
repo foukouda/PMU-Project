@@ -1,0 +1,15 @@
+C:\Users\rlang\Documents\GitHub\PMU-Project\obj\Debug\net6.0\PMU.csproj.AssemblyReference.cache
+C:\Users\rlang\Documents\GitHub\PMU-Project\obj\Debug\net6.0\PMU.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rlang\Documents\GitHub\PMU-Project\obj\Debug\net6.0\PMU.AssemblyInfoInputs.cache
+C:\Users\rlang\Documents\GitHub\PMU-Project\obj\Debug\net6.0\PMU.AssemblyInfo.cs
+C:\Users\rlang\Documents\GitHub\PMU-Project\obj\Debug\net6.0\PMU.csproj.CoreCompileInputs.cache
+C:\Users\rlang\Documents\GitHub\PMU-Project\bin\Debug\net6.0\PMU.exe
+C:\Users\rlang\Documents\GitHub\PMU-Project\bin\Debug\net6.0\PMU.deps.json
+C:\Users\rlang\Documents\GitHub\PMU-Project\bin\Debug\net6.0\PMU.runtimeconfig.json
+C:\Users\rlang\Documents\GitHub\PMU-Project\bin\Debug\net6.0\PMU.dll
+C:\Users\rlang\Documents\GitHub\PMU-Project\bin\Debug\net6.0\PMU.pdb
+C:\Users\rlang\Documents\GitHub\PMU-Project\obj\Debug\net6.0\PMU.dll
+C:\Users\rlang\Documents\GitHub\PMU-Project\obj\Debug\net6.0\refint\PMU.dll
+C:\Users\rlang\Documents\GitHub\PMU-Project\obj\Debug\net6.0\PMU.pdb
+C:\Users\rlang\Documents\GitHub\PMU-Project\obj\Debug\net6.0\PMU.genruntimeconfig.cache
+C:\Users\rlang\Documents\GitHub\PMU-Project\obj\Debug\net6.0\ref\PMU.dll
